@@ -1,6 +1,8 @@
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
 
+#include <stdio.h>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <list>
@@ -25,6 +27,7 @@ class HashTable{
 		int myHash(string s);
 		int getCollisions(); // To make the report and analysis easier
 		double loadFactor(); // To make the report and analysis easier
+		void printTableLoad(); // Debug function to show how the table is populated
 
 };
 

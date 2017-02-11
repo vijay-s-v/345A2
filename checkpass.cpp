@@ -1,11 +1,8 @@
-#include <stdio.h>
-#include <sstream>
-#include <iostream>
 #include <fstream>
 #include <iomanip>
 #include "HashTable.h"
 
-//#define ANALYZE
+#define ANALYZE
 
 using namespace std;
 
@@ -94,6 +91,7 @@ int main(int argc, char * argv[]){
 #ifdef ANALYZE
 	int x = myTable.getCollisions();
 	double a = myTable.loadFactor();
+	myTable.printTableLoad();
 	cout << "Table size: " << TABLE_SIZE << endl;
 	cout << "Collisions: " << x << endl;
 	cout << "Load factor: " << a << endl;

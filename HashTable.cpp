@@ -77,11 +77,40 @@ int HashTable::search(string s){
 // Calculate the current load factor
 // of the hash table
 double HashTable::loadFactor(){
-	return numElements/TABLE_SIZE;
+	double retval = (static_cast<double>(numElements))/(static_cast<double>(TABLE_SIZE));
+	return retval;
 }
 
 // Return the number of collisions
 // that have occured so far
 int HashTable::getCollisions(){
 	return collisions;
+}
+
+// Iterate throught the table and
+// output to the console how many elements
+// are in each bucket of the table
+void HashTable::printTableLoad(){
+	int maxLoad = 0;
+	double avgLoad = 0;
+	int emptyBuckets = 0;
+	int totalElements = 0;
+
+	for(int i = 0; i < TABLE_SIZE; i++){
+		if(table[i].empty()){
+			emptyBuckets++;
+			continue;
+		}
+		int x = table[i].size();
+		avgLoad += x;
+		totalElements += x;
+		if(x > maxLoad){ maxLoad = x; }
+		cout << "Bucket " << i << " has " << x << " elements" << endl;
+	}
+
+	avgLoad = avgLoad/(TABLE_SIZE - emptyBuckets);
+	cout << "The number of unused buckets is: " << emptyBuckets << endl;
+	cout << "The maximum number of elements in a bucket is: " << maxLoad << endl;
+	cout << "The average number of elements in a bucket is: " << avgLoad << endl;
+	cout << "The total number of elements is: " << totalElements << endl << endl;
 }
